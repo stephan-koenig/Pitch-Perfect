@@ -45,7 +45,9 @@
                             <constraint firstItem="jIa-C8-O8Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HiZ-uu-Qvd">
                                 <variation key="widthClass=compact" constant="1"/>
                             </constraint>
-                            <constraint firstItem="aXI-i4-Y29" firstAttribute="top" secondItem="5Nn-GJ-wmP" secondAttribute="bottom" constant="28" id="QtO-BA-339"/>
+                            <constraint firstItem="aXI-i4-Y29" firstAttribute="top" secondItem="5Nn-GJ-wmP" secondAttribute="bottom" constant="28" id="QtO-BA-339">
+                                <variation key="widthClass=compact" constant="78"/>
+                            </constraint>
                             <constraint firstItem="5Nn-GJ-wmP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dmU-BM-3E7"/>
                             <constraint firstItem="jIa-C8-O8Y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gxd-oy-4ZP"/>
                         </constraints>
