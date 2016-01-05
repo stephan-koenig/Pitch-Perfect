@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Record-->
@@ -122,7 +123,38 @@
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kbO-NH-0Tw">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d91-py-Dqg">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="snail"/>
+                                <connections>
+                                    <action selector="playSlowAudio:" destination="PWm-fH-FDe" eventType="touchUpInside" id="9ns-Ae-cTl"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d91-py-Dqg" firstAttribute="leading" secondItem="kbO-NH-0Tw" secondAttribute="leadingMargin" constant="30" id="1yg-Nc-aXM"/>
+                            <constraint firstItem="d91-py-Dqg" firstAttribute="top" secondItem="JXK-yJ-fN3" secondAttribute="bottom" constant="50" id="epC-55-Ab5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="d91-py-Dqg"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="1yg-Nc-aXM"/>
+                                <exclude reference="epC-55-Ab5"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="d91-py-Dqg"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1yg-Nc-aXM"/>
+                                <include reference="epC-55-Ab5"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRj-LH-SIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -132,6 +164,7 @@
     </scenes>
     <resources>
         <image name="microphone" width="100" height="100"/>
+        <image name="snail" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
     </resources>
 </document>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		281E8D211C385DCE00D5B8C7 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281E8D201C385DCE00D5B8C7 /* PlaySoundsViewController.swift */; };
+		281E8D231C3B36C900D5B8C7 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 281E8D221C3B36C900D5B8C7 /* movie_quote.mp3 */; };
 		28DF662C1C353BBB006CEAE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF662B1C353BBB006CEAE3 /* AppDelegate.swift */; };
 		28DF662E1C353BBB006CEAE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF662D1C353BBB006CEAE3 /* ViewController.swift */; };
 		28DF66311C353BBB006CEAE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28DF662F1C353BBB006CEAE3 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		281E8D201C385DCE00D5B8C7 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
+		281E8D221C3B36C900D5B8C7 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 		28DF66281C353BBB006CEAE3 /* Pitch Perfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Perfect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF662B1C353BBB006CEAE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28DF662D1C353BBB006CEAE3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		28DF662A1C353BBB006CEAE3 /* Pitch Perfect */ = {
 			isa = PBXGroup;
 			children = (
+				281E8D221C3B36C900D5B8C7 /* movie_quote.mp3 */,
 				28DF662B1C353BBB006CEAE3 /* AppDelegate.swift */,
 				28DF662D1C353BBB006CEAE3 /* ViewController.swift */,
 				28DF662F1C353BBB006CEAE3 /* Main.storyboard */,
@@ -128,6 +131,7 @@
 			files = (
 				28DF66361C353BBB006CEAE3 /* LaunchScreen.storyboard in Resources */,
 				28DF66331C353BBB006CEAE3 /* Assets.xcassets in Resources */,
+				281E8D231C3B36C900D5B8C7 /* movie_quote.mp3 in Resources */,
 				28DF66311C353BBB006CEAE3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
