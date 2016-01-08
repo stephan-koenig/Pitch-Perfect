@@ -9,11 +9,15 @@
 import UIKit
 import AVFoundation
 
-// Make view controller AVAudioPlayerDelegate so it can respond to end of audio playback
-class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
+// // Make view controller AVAudioPlayerDelegate so it can respond to end of audio playback
+// class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
 
-    var audioPlayer: AVAudioPlayer!
+class PlaySoundsViewController: UIViewController {
+    
+    var audioEngine: AVAudioEngine!
+    var audioPlayerNode: AVAudioPlayerNode!
     var receivedAudio: RecordedAudio!
+    var audioFile: AVAudioFile!
     
     @IBOutlet weak var stopButton: UIButton!
     
@@ -21,23 +25,9 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // Example: check if filePath is not nil for specific sound file
-        // if let filePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3") {
-        //     let filePathUrl = NSURL.fileURLWithPath(filePath)
-        //     audioPlayer = try! AVAudioPlayer(contentsOfURL: filePathUrl)
-        //     audioPlayer.enableRate = true
-        // } else {
-        //     print("The filePath is empty.")
-        // }
-
-    
-        // Check if received filepath is not nil
-        audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
-        audioPlayer.enableRate = true
-        
-        // Set delegate of audio player to ViewController
-        audioPlayer.delegate = self
-
+        // Initializing AVAudioEngine for manipulation of audio file
+        audioEngine = AVAudioEngine()
+        audioFile = try! AVAudioFile.init(forReading: receivedAudio.filePathUrl)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,25 +44,48 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         stopButton.hidden = true
     }
     
-    func playAudioAtSpeed(speed: Float) {
-        // Stop any audio playback, rewind, and start at
-        audioPlayer.stop()
-        audioPlayer.rate = speed
-        audioPlayer.currentTime = 0.0
-        audioPlayer.play()
+    func playAudioAtSpeedAndPitch(speed: Float, pitch: Float) {
+        // Stop any audio playback and reset audio engine
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        // Attach player node to audio engine
+        audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+
+        // Attach pitch effect to audion engine
+        let changePitchEffect = AVAudioUnitTimePitch()
+        changePitchEffect.rate = speed
+        changePitchEffect.pitch = pitch
+        audioEngine.attachNode(changePitchEffect)
+        
+        // Connect nodes in correct sequence
+        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
+        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: {
+            self.stopButton.hidden = true
+        })
+        try! audioEngine.start()
+        audioPlayerNode.play()
+        
         stopButton.hidden = false
     }
     
     @IBAction func playSlowAudio(sender: UIButton) {
-        playAudioAtSpeed(0.5)
+        playAudioAtSpeedAndPitch(0.5, pitch: 1)
     }
 
     @IBAction func playFastAudio(sender: UIButton) {
-        playAudioAtSpeed(1.5)
+        playAudioAtSpeedAndPitch(1.5, pitch: 1)
+    }
+    
+    @IBAction func playChipmunkAudio(sender: UIButton) {
+        playAudioAtSpeedAndPitch(1, pitch: 1000)
     }
     
     @IBAction func stopAudio(sender: UIButton) {
-        audioPlayer.stop()
+        audioPlayerNode.stop()
         stopButton.hidden = true
     }
     

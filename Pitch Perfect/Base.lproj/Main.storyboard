@@ -147,14 +147,29 @@
                                     <action selector="stopAudio:" destination="PWm-fH-FDe" eventType="touchUpInside" id="Vy4-aK-Bgh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bal-5R-mIF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="chipmunk"/>
+                                <connections>
+                                    <action selector="playChipmunkAudio:" destination="PWm-fH-FDe" eventType="touchUpInside" id="bil-7p-mbm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkH-Mn-m0I">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="287" y="319" width="46" height="30"/>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="d91-py-Dqg" firstAttribute="leading" secondItem="kbO-NH-0Tw" secondAttribute="leadingMargin" constant="30" id="1yg-Nc-aXM"/>
                             <constraint firstItem="7M6-3i-EKn" firstAttribute="top" secondItem="JXK-yJ-fN3" secondAttribute="bottom" constant="50" id="SbO-MT-AOi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7M6-3i-EKn" secondAttribute="trailing" constant="30" id="TAy-3N-yBc"/>
+                            <constraint firstItem="Bal-5R-mIF" firstAttribute="leading" secondItem="kbO-NH-0Tw" secondAttribute="leadingMargin" constant="30" id="XHH-86-YbB"/>
                             <constraint firstItem="UXs-U5-T7B" firstAttribute="centerX" secondItem="kbO-NH-0Tw" secondAttribute="centerX" id="ags-t8-Jzb"/>
                             <constraint firstItem="d91-py-Dqg" firstAttribute="top" secondItem="JXK-yJ-fN3" secondAttribute="bottom" constant="50" id="epC-55-Ab5"/>
+                            <constraint firstItem="Bal-5R-mIF" firstAttribute="top" secondItem="d91-py-Dqg" secondAttribute="bottom" constant="50" id="n1D-ZV-9Hl"/>
                             <constraint firstItem="6Hj-Qg-Si4" firstAttribute="top" secondItem="UXs-U5-T7B" secondAttribute="bottom" constant="50" id="s1B-UZ-NpB"/>
                         </constraints>
                         <variation key="default">
@@ -162,14 +177,18 @@
                                 <exclude reference="d91-py-Dqg"/>
                                 <exclude reference="7M6-3i-EKn"/>
                                 <exclude reference="UXs-U5-T7B"/>
+                                <exclude reference="Bal-5R-mIF"/>
+                                <exclude reference="TkH-Mn-m0I"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="s1B-UZ-NpB"/>
+                                <exclude reference="1yg-Nc-aXM"/>
+                                <exclude reference="epC-55-Ab5"/>
+                                <exclude reference="XHH-86-YbB"/>
+                                <exclude reference="n1D-ZV-9Hl"/>
                                 <exclude reference="SbO-MT-AOi"/>
                                 <exclude reference="TAy-3N-yBc"/>
                                 <exclude reference="ags-t8-Jzb"/>
-                                <exclude reference="1yg-Nc-aXM"/>
-                                <exclude reference="epC-55-Ab5"/>
+                                <exclude reference="s1B-UZ-NpB"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -177,14 +196,18 @@
                                 <include reference="d91-py-Dqg"/>
                                 <include reference="7M6-3i-EKn"/>
                                 <include reference="UXs-U5-T7B"/>
+                                <include reference="Bal-5R-mIF"/>
+                                <include reference="TkH-Mn-m0I"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="s1B-UZ-NpB"/>
+                                <include reference="1yg-Nc-aXM"/>
+                                <include reference="epC-55-Ab5"/>
+                                <include reference="XHH-86-YbB"/>
+                                <include reference="n1D-ZV-9Hl"/>
                                 <include reference="SbO-MT-AOi"/>
                                 <include reference="TAy-3N-yBc"/>
                                 <include reference="ags-t8-Jzb"/>
-                                <include reference="1yg-Nc-aXM"/>
-                                <include reference="epC-55-Ab5"/>
+                                <include reference="s1B-UZ-NpB"/>
                             </mask>
                         </variation>
                     </view>
@@ -198,6 +221,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chipmunk" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="rabbit" width="100" height="100"/>
         <image name="snail" width="100" height="100"/>
