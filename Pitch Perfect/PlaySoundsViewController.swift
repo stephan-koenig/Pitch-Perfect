@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+// Make view controller AVAudioPlayerDelegate so it can respond to end of audio playback
 class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
 
     var audioPlayer: AVAudioPlayer!
@@ -22,6 +23,8 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
             let filePathUrl = NSURL.fileURLWithPath(filePath)
             audioPlayer = try! AVAudioPlayer(contentsOfURL: filePathUrl)
             audioPlayer.enableRate = true
+            
+            // Set delegate of audio player to ViewController
             audioPlayer.delegate = self
         } else {
             print("The filePath is empty.")
@@ -38,11 +41,13 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         stopButton.hidden = true
     }
     
+    // Audio player delegate function
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         stopButton.hidden = true
     }
     
     func playAudioAtSpeed(speed: Float) {
+        // Stop any audio playback, rewind, and start at
         audioPlayer.stop()
         audioPlayer.rate = speed
         audioPlayer.currentTime = 0.0
