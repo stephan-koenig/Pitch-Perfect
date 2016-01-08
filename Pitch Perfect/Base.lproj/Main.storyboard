@@ -154,19 +154,22 @@
                                     <action selector="playChipmunkAudio:" destination="PWm-fH-FDe" eventType="touchUpInside" id="bil-7p-mbm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkH-Mn-m0I">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkH-Mn-m0I">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="287" y="319" width="46" height="30"/>
-                                </variation>
+                                <state key="normal" image="vader"/>
+                                <connections>
+                                    <action selector="playDarthVaderAudio:" destination="PWm-fH-FDe" eventType="touchUpInside" id="wgH-uq-Rzh"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.12549019610000001" green="0.36470588240000001" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="d91-py-Dqg" firstAttribute="leading" secondItem="kbO-NH-0Tw" secondAttribute="leadingMargin" constant="30" id="1yg-Nc-aXM"/>
                             <constraint firstItem="7M6-3i-EKn" firstAttribute="top" secondItem="JXK-yJ-fN3" secondAttribute="bottom" constant="50" id="SbO-MT-AOi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7M6-3i-EKn" secondAttribute="trailing" constant="30" id="TAy-3N-yBc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TkH-Mn-m0I" secondAttribute="trailing" constant="30" id="Tor-gh-oJY"/>
                             <constraint firstItem="Bal-5R-mIF" firstAttribute="leading" secondItem="kbO-NH-0Tw" secondAttribute="leadingMargin" constant="30" id="XHH-86-YbB"/>
+                            <constraint firstItem="TkH-Mn-m0I" firstAttribute="top" secondItem="7M6-3i-EKn" secondAttribute="bottom" constant="50" id="Xp0-bK-QTB"/>
                             <constraint firstItem="UXs-U5-T7B" firstAttribute="centerX" secondItem="kbO-NH-0Tw" secondAttribute="centerX" id="ags-t8-Jzb"/>
                             <constraint firstItem="d91-py-Dqg" firstAttribute="top" secondItem="JXK-yJ-fN3" secondAttribute="bottom" constant="50" id="epC-55-Ab5"/>
                             <constraint firstItem="Bal-5R-mIF" firstAttribute="top" secondItem="d91-py-Dqg" secondAttribute="bottom" constant="50" id="n1D-ZV-9Hl"/>
@@ -187,6 +190,8 @@
                                 <exclude reference="n1D-ZV-9Hl"/>
                                 <exclude reference="SbO-MT-AOi"/>
                                 <exclude reference="TAy-3N-yBc"/>
+                                <exclude reference="Tor-gh-oJY"/>
+                                <exclude reference="Xp0-bK-QTB"/>
                                 <exclude reference="ags-t8-Jzb"/>
                                 <exclude reference="s1B-UZ-NpB"/>
                             </mask>
@@ -206,6 +211,8 @@
                                 <include reference="n1D-ZV-9Hl"/>
                                 <include reference="SbO-MT-AOi"/>
                                 <include reference="TAy-3N-yBc"/>
+                                <include reference="Tor-gh-oJY"/>
+                                <include reference="Xp0-bK-QTB"/>
                                 <include reference="ags-t8-Jzb"/>
                                 <include reference="s1B-UZ-NpB"/>
                             </mask>
@@ -226,5 +233,6 @@
         <image name="rabbit" width="100" height="100"/>
         <image name="snail" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
+        <image name="vader" width="100" height="100"/>
     </resources>
 </document>

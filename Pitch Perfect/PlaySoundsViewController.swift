@@ -63,7 +63,7 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: {
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: { () -> Void in
             self.stopButton.hidden = true
         })
         try! audioEngine.start()
@@ -73,15 +73,19 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSlowAudio(sender: UIButton) {
-        playAudioAtSpeedAndPitch(0.5, pitch: 1)
+        playAudioAtSpeedAndPitch(0.5, pitch: 1.0)
     }
 
     @IBAction func playFastAudio(sender: UIButton) {
-        playAudioAtSpeedAndPitch(1.5, pitch: 1)
+        playAudioAtSpeedAndPitch(1.5, pitch: 1.0)
     }
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
-        playAudioAtSpeedAndPitch(1, pitch: 1000)
+        playAudioAtSpeedAndPitch(1.0, pitch: 1000.0)
+    }
+    
+    @IBAction func playDarthVaderAudio(sender: UIButton) {
+        playAudioAtSpeedAndPitch(1.0, pitch: -1000.0)
     }
     
     @IBAction func stopAudio(sender: UIButton) {
