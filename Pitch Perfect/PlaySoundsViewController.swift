@@ -9,9 +9,11 @@
 import UIKit
 import AVFoundation
 
-class PlaySoundsViewController: UIViewController {
+class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
 
     var audioPlayer: AVAudioPlayer!
+    
+    @IBOutlet weak var stopButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,7 @@ class PlaySoundsViewController: UIViewController {
             let filePathUrl = NSURL.fileURLWithPath(filePath)
             audioPlayer = try! AVAudioPlayer(contentsOfURL: filePathUrl)
             audioPlayer.enableRate = true
+            audioPlayer.delegate = self
         } else {
             print("The filePath is empty.")
         }
@@ -31,12 +34,35 @@ class PlaySoundsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func playSlowAudio(sender: UIButton) {
+    override func viewWillAppear(animated: Bool) {
+        stopButton.hidden = true
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        stopButton.hidden = true
+    }
+    
+    func playAudioAtSpeed(speed: Float) {
         audioPlayer.stop()
-        audioPlayer.rate = 0.5
+        audioPlayer.rate = speed
+        audioPlayer.currentTime = 0.0
         audioPlayer.play()
+        stopButton.hidden = false
+    }
+    
+    @IBAction func playSlowAudio(sender: UIButton) {
+        playAudioAtSpeed(0.5)
     }
 
+    @IBAction func playFastAudio(sender: UIButton) {
+        playAudioAtSpeed(1.5)
+    }
+    
+    @IBAction func stopAudio(sender: UIButton) {
+        audioPlayer.stop()
+        stopButton.hidden = true
+    }
+    
     /*
     // MARK: - Navigation
 
