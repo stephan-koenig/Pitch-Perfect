@@ -13,22 +13,30 @@ import AVFoundation
 class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
 
     var audioPlayer: AVAudioPlayer!
+    var receivedAudio: RecordedAudio!
     
     @IBOutlet weak var stopButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if let filePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3") {
-            let filePathUrl = NSURL.fileURLWithPath(filePath)
-            audioPlayer = try! AVAudioPlayer(contentsOfURL: filePathUrl)
-            audioPlayer.enableRate = true
-            
-            // Set delegate of audio player to ViewController
-            audioPlayer.delegate = self
-        } else {
-            print("The filePath is empty.")
-        }
+        
+        // Example: check if filePath is not nil for specific sound file
+        // if let filePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3") {
+        //     let filePathUrl = NSURL.fileURLWithPath(filePath)
+        //     audioPlayer = try! AVAudioPlayer(contentsOfURL: filePathUrl)
+        //     audioPlayer.enableRate = true
+        // } else {
+        //     print("The filePath is empty.")
+        // }
+
+    
+        // Check if received filepath is not nil
+        audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
+        audioPlayer.enableRate = true
+        
+        // Set delegate of audio player to ViewController
+        audioPlayer.delegate = self
 
     }
 
