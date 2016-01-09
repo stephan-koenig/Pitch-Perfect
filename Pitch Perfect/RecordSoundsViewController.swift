@@ -14,6 +14,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordingInProgress: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var resumeButton: UIButton!
     
     var audioRecorder: AVAudioRecorder!
     var recordedAudio: RecordedAudio!
@@ -30,12 +32,17 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     override func viewWillAppear(animated: Bool) {
         stopButton.hidden = true
+        pauseButton.hidden = true
         recordButton.enabled = true
+        resumeButton.hidden = true
+        recordingInProgress.hidden = false
+        recordingInProgress.text = "Tap to record"
     }
     
     @IBAction func recordAudio(sender: UIButton) {
         stopButton.hidden = false
-        recordingInProgress.hidden = false
+        pauseButton.hidden = false
+        recordingInProgress.text = "Recording"
         recordButton.enabled = false
 
         // Set directory path and filename
@@ -66,6 +73,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             print("Recording was not successful")
             recordButton.enabled = true
             stopButton.hidden = true
+            pauseButton.hidden = true
         }
     }
     
@@ -76,6 +84,20 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
         }
+    }
+    
+    @IBAction func pauseRecording(sender: UIButton) {
+        pauseButton.hidden = true
+        resumeButton.hidden = false
+        recordingInProgress.text = "Recording paused"
+        audioRecorder.pause()
+    }
+    
+    @IBAction func resumeRecording(sender: UIButton) {
+        pauseButton.hidden = false
+        resumeButton.hidden = true
+        recordingInProgress.text = "Recording"
+        audioRecorder.record()
     }
     
     @IBAction func stopRecording(sender: UIButton) {

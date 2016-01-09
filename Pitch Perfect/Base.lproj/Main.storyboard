@@ -26,7 +26,7 @@
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G9f-Id-t7L"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nn-GJ-wmP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nn-GJ-wmP">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.14509803921568626" green="0.28235294117647058" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,18 +39,34 @@
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GDh-0l-7f5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emn-TU-cDQ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="pause"/>
+                                <connections>
+                                    <action selector="pauseRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n6U-W0-t7E"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7B-3G-P00">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="resume"/>
+                                <connections>
+                                    <action selector="resumeRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dch-wE-PdS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12549019607843137" green="0.36470588235294116" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Q7B-3G-P00" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="36X-Ub-Mef"/>
                             <constraint firstItem="5Nn-GJ-wmP" firstAttribute="top" secondItem="jIa-C8-O8Y" secondAttribute="bottom" constant="8" id="5w5-4q-48N"/>
+                            <constraint firstItem="emn-TU-cDQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CVo-Us-5ai"/>
                             <constraint firstItem="aXI-i4-Y29" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DPa-N5-1qq"/>
+                            <constraint firstItem="Q7B-3G-P00" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gkt-IA-0e4"/>
                             <constraint firstItem="jIa-C8-O8Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HiZ-uu-Qvd">
                                 <variation key="widthClass=compact" constant="1"/>
                             </constraint>
-                            <constraint firstItem="aXI-i4-Y29" firstAttribute="top" secondItem="5Nn-GJ-wmP" secondAttribute="bottom" constant="28" id="QtO-BA-339">
-                                <variation key="widthClass=compact" constant="78"/>
-                            </constraint>
                             <constraint firstItem="5Nn-GJ-wmP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dmU-BM-3E7"/>
+                            <constraint firstItem="emn-TU-cDQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eVn-cV-lEi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aXI-i4-Y29" secondAttribute="bottom" constant="50" id="fCw-vJ-53P"/>
                             <constraint firstItem="jIa-C8-O8Y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gxd-oy-4ZP"/>
                         </constraints>
                         <variation key="default">
@@ -58,14 +74,20 @@
                                 <exclude reference="jIa-C8-O8Y"/>
                                 <exclude reference="5Nn-GJ-wmP"/>
                                 <exclude reference="aXI-i4-Y29"/>
+                                <exclude reference="emn-TU-cDQ"/>
+                                <exclude reference="Q7B-3G-P00"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="DPa-N5-1qq"/>
-                                <exclude reference="QtO-BA-339"/>
                                 <exclude reference="HiZ-uu-Qvd"/>
                                 <exclude reference="gxd-oy-4ZP"/>
+                                <exclude reference="CVo-Us-5ai"/>
+                                <exclude reference="eVn-cV-lEi"/>
+                                <exclude reference="36X-Ub-Mef"/>
+                                <exclude reference="Gkt-IA-0e4"/>
                                 <exclude reference="5w5-4q-48N"/>
                                 <exclude reference="dmU-BM-3E7"/>
+                                <exclude reference="DPa-N5-1qq"/>
+                                <exclude reference="fCw-vJ-53P"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -73,21 +95,29 @@
                                 <include reference="jIa-C8-O8Y"/>
                                 <include reference="5Nn-GJ-wmP"/>
                                 <include reference="aXI-i4-Y29"/>
+                                <include reference="emn-TU-cDQ"/>
+                                <include reference="Q7B-3G-P00"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="DPa-N5-1qq"/>
-                                <include reference="QtO-BA-339"/>
                                 <include reference="HiZ-uu-Qvd"/>
                                 <include reference="gxd-oy-4ZP"/>
+                                <include reference="CVo-Us-5ai"/>
+                                <include reference="eVn-cV-lEi"/>
+                                <include reference="36X-Ub-Mef"/>
+                                <include reference="Gkt-IA-0e4"/>
                                 <include reference="5w5-4q-48N"/>
                                 <include reference="dmU-BM-3E7"/>
+                                <include reference="DPa-N5-1qq"/>
+                                <include reference="fCw-vJ-53P"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="C3y-Nf-dKt"/>
                     <connections>
+                        <outlet property="pauseButton" destination="emn-TU-cDQ" id="4UB-sC-2Nn"/>
                         <outlet property="recordButton" destination="jIa-C8-O8Y" id="c9i-0W-9Rg"/>
                         <outlet property="recordingInProgress" destination="5Nn-GJ-wmP" id="hdu-jI-M8N"/>
+                        <outlet property="resumeButton" destination="Q7B-3G-P00" id="BsD-2f-ZcC"/>
                         <outlet property="stopButton" destination="aXI-i4-Y29" id="xcc-Nb-41h"/>
                         <segue destination="PWm-fH-FDe" kind="show" identifier="stopRecording" id="jXz-dc-QYi"/>
                     </connections>
@@ -184,16 +214,16 @@
                                 <exclude reference="TkH-Mn-m0I"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1yg-Nc-aXM"/>
-                                <exclude reference="epC-55-Ab5"/>
-                                <exclude reference="XHH-86-YbB"/>
-                                <exclude reference="n1D-ZV-9Hl"/>
+                                <exclude reference="s1B-UZ-NpB"/>
                                 <exclude reference="SbO-MT-AOi"/>
                                 <exclude reference="TAy-3N-yBc"/>
+                                <exclude reference="XHH-86-YbB"/>
+                                <exclude reference="n1D-ZV-9Hl"/>
                                 <exclude reference="Tor-gh-oJY"/>
                                 <exclude reference="Xp0-bK-QTB"/>
                                 <exclude reference="ags-t8-Jzb"/>
-                                <exclude reference="s1B-UZ-NpB"/>
+                                <exclude reference="1yg-Nc-aXM"/>
+                                <exclude reference="epC-55-Ab5"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -205,16 +235,16 @@
                                 <include reference="TkH-Mn-m0I"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1yg-Nc-aXM"/>
-                                <include reference="epC-55-Ab5"/>
-                                <include reference="XHH-86-YbB"/>
-                                <include reference="n1D-ZV-9Hl"/>
+                                <include reference="s1B-UZ-NpB"/>
                                 <include reference="SbO-MT-AOi"/>
                                 <include reference="TAy-3N-yBc"/>
+                                <include reference="XHH-86-YbB"/>
+                                <include reference="n1D-ZV-9Hl"/>
                                 <include reference="Tor-gh-oJY"/>
                                 <include reference="Xp0-bK-QTB"/>
                                 <include reference="ags-t8-Jzb"/>
-                                <include reference="s1B-UZ-NpB"/>
+                                <include reference="1yg-Nc-aXM"/>
+                                <include reference="epC-55-Ab5"/>
                             </mask>
                         </variation>
                     </view>
@@ -230,7 +260,9 @@
     <resources>
         <image name="chipmunk" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="pause" width="80" height="80"/>
         <image name="rabbit" width="100" height="100"/>
+        <image name="resume" width="80" height="80"/>
         <image name="snail" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
         <image name="vader" width="100" height="100"/>
