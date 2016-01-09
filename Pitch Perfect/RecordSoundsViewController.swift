@@ -37,15 +37,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.hidden = false
         recordingInProgress.hidden = false
         recordButton.enabled = false
-        //TODO: Record the user's voice
-        // Set directory path
+
+        // Set directory path and filename
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        
-        // Optional: Set file name to timestep and save to directory path
-        // let currentDateTime = NSDate()
-        // let formatter = NSDateFormatter()
-        // formatter.dateFormat = "ddMMyyyy-HHmmss"
-        // let recordingName = formatter.stringFromDate(currentDateTime)+".wav"
         let recordingName = "my_audio.wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
@@ -65,9 +59,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
             // Save the recorded audio
-            recordedAudio = RecordedAudio()
-            recordedAudio.filePathUrl = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
+            recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
             // Perform segue
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         } else {
