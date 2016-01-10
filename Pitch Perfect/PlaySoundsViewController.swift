@@ -26,6 +26,7 @@ class PlaySoundsViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Initializing AVAudioEngine, enables manipulated playback of audio file
+        try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.Speaker)
         audioEngine = AVAudioEngine()
         audioFile = try! AVAudioFile.init(forReading: receivedAudio.filePathUrl)
     }
