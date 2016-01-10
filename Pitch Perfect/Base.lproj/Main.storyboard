@@ -191,6 +191,20 @@
                                     <action selector="playDarthVaderAudio:" destination="PWm-fH-FDe" eventType="touchUpInside" id="wgH-uq-Rzh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2B-Ip-eAd">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="reverb"/>
+                                <connections>
+                                    <action selector="platWithReverb:" destination="PWm-fH-FDe" eventType="touchUpInside" id="ynK-VP-6Ic"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVi-nH-cxe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="parrot"/>
+                                <connections>
+                                    <action selector="playWithEcho:" destination="PWm-fH-FDe" eventType="touchUpInside" id="ahf-gp-7Am"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12549019610000001" green="0.36470588240000001" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -198,10 +212,14 @@
                             <constraint firstItem="7M6-3i-EKn" firstAttribute="top" secondItem="JXK-yJ-fN3" secondAttribute="bottom" constant="50" id="SbO-MT-AOi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7M6-3i-EKn" secondAttribute="trailing" constant="30" id="TAy-3N-yBc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TkH-Mn-m0I" secondAttribute="trailing" constant="30" id="Tor-gh-oJY"/>
+                            <constraint firstItem="Q2B-Ip-eAd" firstAttribute="top" secondItem="Bal-5R-mIF" secondAttribute="bottom" constant="50" id="UEX-Y9-46b"/>
                             <constraint firstItem="Bal-5R-mIF" firstAttribute="leading" secondItem="kbO-NH-0Tw" secondAttribute="leadingMargin" constant="30" id="XHH-86-YbB"/>
                             <constraint firstItem="TkH-Mn-m0I" firstAttribute="top" secondItem="7M6-3i-EKn" secondAttribute="bottom" constant="50" id="Xp0-bK-QTB"/>
                             <constraint firstItem="UXs-U5-T7B" firstAttribute="centerX" secondItem="kbO-NH-0Tw" secondAttribute="centerX" id="ags-t8-Jzb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rVi-nH-cxe" secondAttribute="trailing" constant="38" id="dnu-hG-5mp"/>
                             <constraint firstItem="d91-py-Dqg" firstAttribute="top" secondItem="JXK-yJ-fN3" secondAttribute="bottom" constant="50" id="epC-55-Ab5"/>
+                            <constraint firstItem="Q2B-Ip-eAd" firstAttribute="leading" secondItem="kbO-NH-0Tw" secondAttribute="leadingMargin" constant="38" id="gBc-RW-btR"/>
+                            <constraint firstItem="rVi-nH-cxe" firstAttribute="top" secondItem="TkH-Mn-m0I" secondAttribute="bottom" constant="50" id="i8Y-4N-keB"/>
                             <constraint firstItem="Bal-5R-mIF" firstAttribute="top" secondItem="d91-py-Dqg" secondAttribute="bottom" constant="50" id="n1D-ZV-9Hl"/>
                             <constraint firstItem="6Hj-Qg-Si4" firstAttribute="top" secondItem="UXs-U5-T7B" secondAttribute="bottom" constant="50" id="s1B-UZ-NpB"/>
                         </constraints>
@@ -212,18 +230,24 @@
                                 <exclude reference="UXs-U5-T7B"/>
                                 <exclude reference="Bal-5R-mIF"/>
                                 <exclude reference="TkH-Mn-m0I"/>
+                                <exclude reference="Q2B-Ip-eAd"/>
+                                <exclude reference="rVi-nH-cxe"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="s1B-UZ-NpB"/>
-                                <exclude reference="SbO-MT-AOi"/>
-                                <exclude reference="TAy-3N-yBc"/>
-                                <exclude reference="XHH-86-YbB"/>
-                                <exclude reference="n1D-ZV-9Hl"/>
-                                <exclude reference="Tor-gh-oJY"/>
-                                <exclude reference="Xp0-bK-QTB"/>
-                                <exclude reference="ags-t8-Jzb"/>
                                 <exclude reference="1yg-Nc-aXM"/>
                                 <exclude reference="epC-55-Ab5"/>
+                                <exclude reference="XHH-86-YbB"/>
+                                <exclude reference="n1D-ZV-9Hl"/>
+                                <exclude reference="SbO-MT-AOi"/>
+                                <exclude reference="TAy-3N-yBc"/>
+                                <exclude reference="Tor-gh-oJY"/>
+                                <exclude reference="Xp0-bK-QTB"/>
+                                <exclude reference="UEX-Y9-46b"/>
+                                <exclude reference="gBc-RW-btR"/>
+                                <exclude reference="dnu-hG-5mp"/>
+                                <exclude reference="i8Y-4N-keB"/>
+                                <exclude reference="ags-t8-Jzb"/>
+                                <exclude reference="s1B-UZ-NpB"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -233,18 +257,24 @@
                                 <include reference="UXs-U5-T7B"/>
                                 <include reference="Bal-5R-mIF"/>
                                 <include reference="TkH-Mn-m0I"/>
+                                <include reference="Q2B-Ip-eAd"/>
+                                <include reference="rVi-nH-cxe"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="s1B-UZ-NpB"/>
-                                <include reference="SbO-MT-AOi"/>
-                                <include reference="TAy-3N-yBc"/>
-                                <include reference="XHH-86-YbB"/>
-                                <include reference="n1D-ZV-9Hl"/>
-                                <include reference="Tor-gh-oJY"/>
-                                <include reference="Xp0-bK-QTB"/>
-                                <include reference="ags-t8-Jzb"/>
                                 <include reference="1yg-Nc-aXM"/>
                                 <include reference="epC-55-Ab5"/>
+                                <include reference="XHH-86-YbB"/>
+                                <include reference="n1D-ZV-9Hl"/>
+                                <include reference="SbO-MT-AOi"/>
+                                <include reference="TAy-3N-yBc"/>
+                                <include reference="Tor-gh-oJY"/>
+                                <include reference="Xp0-bK-QTB"/>
+                                <include reference="UEX-Y9-46b"/>
+                                <include reference="gBc-RW-btR"/>
+                                <include reference="dnu-hG-5mp"/>
+                                <include reference="i8Y-4N-keB"/>
+                                <include reference="ags-t8-Jzb"/>
+                                <include reference="s1B-UZ-NpB"/>
                             </mask>
                         </variation>
                     </view>
@@ -260,9 +290,11 @@
     <resources>
         <image name="chipmunk" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="parrot" width="80" height="80"/>
         <image name="pause" width="80" height="80"/>
         <image name="rabbit" width="100" height="100"/>
         <image name="resume" width="80" height="80"/>
+        <image name="reverb" width="80" height="80"/>
         <image name="snail" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
         <image name="vader" width="100" height="100"/>

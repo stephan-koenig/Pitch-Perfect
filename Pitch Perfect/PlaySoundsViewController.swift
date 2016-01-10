@@ -25,7 +25,7 @@ class PlaySoundsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // Initializing AVAudioEngine for manipulation of audio file
+        // Initializing AVAudioEngine, enables manipulated playback of audio file
         audioEngine = AVAudioEngine()
         audioFile = try! AVAudioFile.init(forReading: receivedAudio.filePathUrl)
     }
@@ -36,7 +36,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        stopButton.hidden = true
+        stopButton.enabled = false
     }
     
     // Audio player delegate function
@@ -44,53 +44,94 @@ class PlaySoundsViewController: UIViewController {
         stopButton.hidden = true
     }
     
-    func playAudioAtSpeedAndPitch(speed: Float, pitch: Float) {
+    func playAudioAtSpeedAndPitch(speed: Float, pitch: Float, reverb: Bool, echo: Bool) {
         // Stop any audio playback and reset audio engine
         audioEngine.stop()
         audioEngine.reset()
         
+        // Based on parameters audio nodes are added to nodes array
+        var nodes = [AVAudioNode]()
+        let changePitchEffect: AVAudioUnitTimePitch
+        let addReverbEffect: AVAudioUnitReverb
+        let addEchoEffect: AVAudioUnitDelay
+        
         // Attach player node to audio engine
         audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
+        nodes.append(audioPlayerNode)
+        
 
-        // Attach pitch effect to audion engine
-        let changePitchEffect = AVAudioUnitTimePitch()
-        changePitchEffect.rate = speed
-        changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
+        // Attach pitch effect to audio engine
+        if speed != 1.0 || pitch != 1.0 {
+            changePitchEffect = AVAudioUnitTimePitch()
+            changePitchEffect.rate = speed
+            changePitchEffect.pitch = pitch
+            audioEngine.attachNode(changePitchEffect)
+            nodes.append(changePitchEffect)
+        }
         
-        // Connect nodes in correct sequence
-        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        // Attach reverb effect to audio engine
+        if reverb {
+            addReverbEffect = AVAudioUnitReverb()
+            addReverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
+            addReverbEffect.wetDryMix = 50.0
+            audioEngine.attachNode(addReverbEffect)
+            nodes.append(addReverbEffect)
+        }
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: { () -> Void in
-            self.stopButton.hidden = true
+        // Attach echo effecto to audio engine
+        if echo {
+            addEchoEffect = AVAudioUnitDelay()
+            addEchoEffect.delayTime = NSTimeInterval(1)
+            addEchoEffect.wetDryMix = 100.0
+            audioEngine.attachNode(addEchoEffect)
+            nodes.append(addEchoEffect)
+        }
+        
+        // Add output node to nodes
+        nodes.append(audioEngine.outputNode)
+        
+        // Loop through nodes and connect them
+        for idx in 0...(nodes.count - 2) {
+            audioEngine.connect(nodes[idx], to: nodes[idx + 1], format: nil)
+        }
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: {
+            self.stopButton.enabled = false
         })
         try! audioEngine.start()
         audioPlayerNode.play()
         
-        stopButton.hidden = false
+        stopButton.enabled = true
     }
     
     @IBAction func playSlowAudio(sender: UIButton) {
-        playAudioAtSpeedAndPitch(0.5, pitch: 1.0)
+        playAudioAtSpeedAndPitch(0.5, pitch: 1.0, reverb: false, echo: false)
     }
 
     @IBAction func playFastAudio(sender: UIButton) {
-        playAudioAtSpeedAndPitch(1.5, pitch: 1.0)
+        playAudioAtSpeedAndPitch(1.5, pitch: 1.0, reverb: false, echo: false)
     }
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
-        playAudioAtSpeedAndPitch(1.0, pitch: 1000.0)
+        playAudioAtSpeedAndPitch(1.0, pitch: 1000.0, reverb: false, echo: false)
     }
     
     @IBAction func playDarthVaderAudio(sender: UIButton) {
-        playAudioAtSpeedAndPitch(1.0, pitch: -1000.0)
+        playAudioAtSpeedAndPitch(1.0, pitch: -1000.0, reverb: false, echo: false)
+    }
+    
+    @IBAction func platWithReverb(sender: UIButton) {
+        playAudioAtSpeedAndPitch(1.0, pitch: 1.0, reverb: true, echo: false)
+    }
+    
+    @IBAction func playWithEcho(sender: UIButton) {
+        playAudioAtSpeedAndPitch(1.0, pitch: 1.0, reverb: false, echo: true)
     }
     
     @IBAction func stopAudio(sender: UIButton) {
         audioPlayerNode.stop()
-        stopButton.hidden = true
+        stopButton.enabled = false
     }
     
     /*
