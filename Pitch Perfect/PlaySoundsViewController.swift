@@ -9,9 +9,6 @@
 import UIKit
 import AVFoundation
 
-// // Make view controller AVAudioPlayerDelegate so it can respond to end of audio playback
-// class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
-
 class PlaySoundsViewController: UIViewController {
     
     var audioEngine: AVAudioEngine!
@@ -38,11 +35,6 @@ class PlaySoundsViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         stopButton.enabled = false
-    }
-    
-    // Audio player delegate function
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        stopButton.hidden = true
     }
     
     func playAudioAtSpeedAndPitch(speed: Float, pitch: Float, reverb: Bool, echo: Bool) {
